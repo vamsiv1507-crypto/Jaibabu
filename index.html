@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine 💖</title>
+    <style>
+        :root {
+            --primary-pink: #ff758c;
+            --soft-red: #ff7eb3;
+            --deep-red: #d63384;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2rem;
+            animation: floatUp 15s linear infinite;
+            bottom: -50px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #d6336c;
+            /* Darker pink for contrast */
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .subtext {
+            color: #862e9c;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        /* Photo Frame */
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem;
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #ffe3e3;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* Message Card */
+        .message-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .message-line {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #495057;
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0;
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        .message-line:last-child {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #d63384;
+        }
+
+        .message-line:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .message-line:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+
+        .message-line:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .message-line:nth-child(4) {
+            animation-delay: 2.0s;
+        }
+
+        .message-line:nth-child(5) {
+            animation-delay: 2.4s;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Question Section */
+        .question-section h2 {
+            color: #c2255c;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            min-height: 60px;
+            /* Space for buttons */
+        }
+
+        button {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-yes {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+            z-index: 10;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 117, 140, 0.4);
+        }
+
+        .btn-no {
+            background: #fff;
+            color: #868e96;
+            position: relative;
+        }
+
+        .btn-no:hover {
+            background: #f8f9fa;
+        }
+
+        /* Success Message Overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Removed solid white background */
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            padding: 2rem;
+            /* Ensure text is readable if image is dark/light, optional text shadow */
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .success-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bite.jpg') no-repeat center center/cover;
+            opacity: 0.7;
+            z-index: -1;
+            background-color: #fff;
+            /* Fallback if image missing, or base for opacity */
+        }
+
+        .success-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .success-msg {
+            font-size: 2rem;
+            color: #d63384;
+            margin-bottom: 1rem;
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .success-overlay.visible .success-msg {
+            transform: scale(1);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-no {
+                position: absolute;
+            }
+
+            /* Easier to make it jump around */
+        }
+
+        canvas#confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            pointer-events: none;
+            display: none;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Dynamic Background -->
+    <div class="heart-bg" id="heartBg"></div>
+
+    <div class="container">
+        <h1>HI CHINNU!!! 💗</h1>
+        <p class="subtext">If love had a homepage… it would lead to you.</p>
+
+        <div class="photo-frame">
+            <img src="us.jpg" alt="Us" style="width:100%; height:100%; object-fit: cover; border-radius: 12px;">
+        </div>
+
+        <div class="message-card">
+            <span class="message-line">“Chebbuthaaaa anni neethonaaaa...”</span>
+            <span class="message-line">“Chebbuthaaaa Roju Mari Ratri Ayina...”</span>
+            <span class="message-line">“Ayinaaa Kaburulu Mugisenaa...”</span>
+            <span class="message-line">“Kalalooo Malli Raanaaa...”</span>
+            <span class="message-line">“I LOVE YOU FOREVER CHINNUUUU❤️.”</span>
+        </div>
+
+        <div class="question-section">
+            <h2>Will you be my Valentine? 💝</h2>
+            <div class="buttons">
+                <button class="btn-yes" id="yesBtn">YES 💘</button>
+                <button class="btn-no" id="noBtn">NO 🙃</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="success-overlay" id="successOverlay">
+        <h1 class="success-msg">YAYYYY 😭💖</h1>
+        <p style="font-size: 1.5rem; color: #fefefe;">I love you sooooooooooo much CHINNUUUU❤️. Happy Valentine’s Day,
+            my baby 🌹</p>
+    </div>
+
+    <canvas id="confetti"></canvas>
+
+    <!-- Music Toggle -->
+    <div class="music-control" id="musicControl">
+        🎵
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Audio Logic
+        const music = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+        let isPlaying = false;
+
+        // Try to play on load
+        window.addEventListener('load', () => {
+            music.play().then(() => {
+                isPlaying = true;
+                musicControl.innerHTML = '🔊';
+            }).catch(error => {
+                console.log("Autoplay prevented. Waiting for interaction.");
+                musicControl.innerHTML = '🔇';
+            });
+        });
+
+        // Play on first interaction if autoplay failed
+        document.body.addEventListener('click', () => {
+            if (!isPlaying) {
+                music.play();
+                isPlaying = true;
+                musicControl.innerHTML = '🔊';
+            }
+        }, { once: true });
+
+        // Toggle button
+        musicControl.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent body click from triggering
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                musicControl.innerHTML = '🔇';
+            } else {
+                music.play();
+                isPlaying = true;
+                musicControl.innerHTML = '🔊';
+            }
+        });
+
+        // Floating Hearts Logic
+        function createHearts() {
+            const container = document.getElementById('heartBg');
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = Math.random() < 0.5 ? '💗' : '💖';
+
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 10) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        setInterval(createHearts, 1000);
+
+        // No Button Logic (Run away)
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        // Removed unused buttonsContainer
+
+        const moveNoButton = () => {
+            const btnRect = noBtn.getBoundingClientRect();
+            const btnWidth = btnRect.width;
+            const btnHeight = btnRect.height;
+
+            // Get viewport dimensions (excluding scrollbars)
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = document.documentElement.clientHeight;
+
+            // Calculate safe boundaries
+            // Margin gives us some breathing room from the edges
+            const margin = 20;
+            const maxLeft = viewportWidth - btnWidth - margin;
+            const maxTop = viewportHeight - btnHeight - margin;
+
+            // Ensure we have space to move (fallback for tiny screens)
+            // Generate random position between margin and max limit
+            const randomX = margin + Math.random() * (maxLeft - margin);
+            const randomY = margin + Math.random() * (maxTop - margin);
+
+            // Clamp values just in case
+            const finalX = Math.max(margin, Math.min(randomX, maxLeft));
+            const finalY = Math.max(margin, Math.min(randomY, maxTop));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = finalX + 'px';
+            noBtn.style.top = finalY + 'px';
+            noBtn.style.zIndex = '1000'; // Make sure it floats above everything
+        };
+
+        // Desktop hover, Mobile touch start
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Yes Button Logic
+        yesBtn.addEventListener('click', () => {
+            document.getElementById('successOverlay').classList.add('visible');
+            // Hide main container to focus on message? Optional. 
+            // document.querySelector('.container').style.opacity = '0';
+            startConfetti();
+        });
+
+        // Simple Confetti Implementation
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+
+        function startConfetti() {
+            canvas.style.display = 'block';
+            resizeCanvas();
+
+            // Create particles
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    vx: Math.random() * 4 - 2,
+                    vy: Math.random() * 4 + 2,
+                    color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+                    size: Math.random() * 10 + 5,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 10 - 5
+                });
+            }
+
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, index) => {
+                p.y += p.vy;
+                p.x += p.vx;
+                p.rotation += p.rotationSpeed;
+
+                if (p.y > canvas.height) {
+                    p.y = -10;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation * Math.PI / 180);
+
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+
+                ctx.restore();
+            });
+
+            requestAnimationFrame(animateConfetti);
+        }
+
+    </script>
+</body>
+
+</html>
